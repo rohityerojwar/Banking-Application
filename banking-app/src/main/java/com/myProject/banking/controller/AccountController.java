@@ -26,13 +26,13 @@ public class AccountController {
 		this.accountService = accountService;	
 	}
 	
-	//add account rest api
+	//Add account Rest API
 	@PostMapping
 	public ResponseEntity<AccountDto> addAccount(@RequestBody AccountDto accountDto){
 		return new ResponseEntity<>(accountService.createAccount(accountDto),HttpStatus.CREATED);
 	}
 	
-	//get account Rest API
+	//Get account Rest API
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<AccountDto> getAccountById(@PathVariable long id){
@@ -40,7 +40,8 @@ public class AccountController {
 		return ResponseEntity.ok(accountDto);
 	}
 	
-	//deposit Rest API
+	//Deposit Rest API
+	
 	@PutMapping("/{id}/deposit")
 	public ResponseEntity<AccountDto> deposit(@PathVariable long id, @RequestBody Map<String, Double>request){
 		
@@ -49,7 +50,8 @@ public class AccountController {
 		return ResponseEntity.ok(accountDto);
 	}
 
-	//witdraw Rest API
+	//Witdraw Rest API
+	
 	@PutMapping("/{id}/witdraw")
 	public ResponseEntity<AccountDto> witdraw(@PathVariable long id, @RequestBody Map<String, Double>request){
 		
@@ -58,14 +60,16 @@ public class AccountController {
 		return ResponseEntity.ok(accountDto);
 	}
 	
-	//get all accounts Rest API
+	//Get all accounts Rest API
+	
 	@GetMapping
 	public ResponseEntity<java.util.List<AccountDto>> getAllAccounts(){
 		java.util.List<AccountDto> accounts = accountService.getAllAccounts();
 		return ResponseEntity.ok(accounts);
 	}
 	
-	//delete account Rest API
+	//Delete account Rest API
+	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteAccount(@PathVariable long id){
 		accountService.deleteAccount(id);
